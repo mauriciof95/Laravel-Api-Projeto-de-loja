@@ -1,3 +1,30 @@
+
 <div>
-    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
+
+    <header>
+        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+            Atualização de Categoria
+        </h2>
+    </header>
+
+    <form wire:submit="atualizar" class="mt-6 space-y-6">
+        <div>
+            <x-input-label for="nome" :value="'Nome da Categoria'" />
+            <x-text-input wire:model="nome" id="nome" name="nome" type="text" class="mt-1 block w-full" required autofocus autocomplete="nome" />
+            <x-input-error class="mt-2" :messages="$errors->get('nome')" />
+        </div>
+
+        <div class="flex items-center gap-4">
+            <x-primary-button>
+                <span wire:loading wire:target="atualizar" class="mr-2 size-4">
+                    <span class="loader"></span>
+                </span>
+                Salvar
+            </x-primary-button>
+            <x-secondary-button onclick="window.history.back()">
+                Voltar
+            </x-secondary-button>
+        </div>
+    </form>
 </div>
+

@@ -2,24 +2,22 @@
 
 use App\Livewire\Categoria\CadastrarCategoria;
 use App\Livewire\Categoria\EditarCategoria;
+use App\Livewire\Categoria\IndexCategoria;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth'])->group(function(){
+    Route::view('dashboard', 'dashboard')->middleware('verified')->name('dashboard');
+    Route::view('profile', 'profile')->name('profile');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
 
-Route::get('/categoria/cadastrar', CadastrarCategoria::class)
-    ->middleware(['auth'])
-    ->name('cadastrar_categoria');
+    Route::get('/categoria', IndexCategoria::class)->name('index_categoria');
+    Route::get('/categoria/cadastrar', CadastrarCategoria::class)->name('cadastrar_categoria');
+    Route::get('/categoria/editar/{id}', EditarCategoria::class)->name('editar_categoria');
 
-Route::get('/categoria/editar', EditarCategoria::class)
-    ->middleware(['auth'])
-    ->name('editar_categoria');
+
+});
+
 
 require __DIR__.'/auth.php';

@@ -1,5 +1,5 @@
 
-<section>
+<div>
 
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
@@ -21,7 +21,10 @@
                 </span>
                 Cadastrar
             </x-primary-button>
+            <x-secondary-button onclick="window.history.back()">
+                Voltar
+            </x-secondary-button>
         </div>
     </form>
-</section>
+</div>
 

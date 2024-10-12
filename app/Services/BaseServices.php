@@ -1,9 +1,11 @@
 <?php
 namespace App\Services;
 
+use Illuminate\Support\Facades\DB;
+
 class BaseServices
 {
-    public function aplicar_select($query, $select = [])
+    public function aplicarSelect($query, $select = [])
     {
         if (!empty($select)) {
             return $query->select($select);
@@ -12,7 +14,7 @@ class BaseServices
         return $query;
     }
 
-    public function aplicar_relacionamento($query, $relacionamentos = [])
+    public function aplicarRelacionamento($query, $relacionamentos = [])
     {
         if (!empty($relacionamentos)) {
             return $query->with($relacionamentos);
@@ -21,7 +23,7 @@ class BaseServices
         return $query;
     }
 
-    public function aplicar_ordenacao($query, $ordenacao = [])
+    public function aplicarOrdenacao($query, $ordenacao = [])
     {
         if (!empty($ordenacao))
         {
@@ -29,5 +31,25 @@ class BaseServices
         }
 
         return $query;
+    }
+
+    function transaction($callback, $callback_pos_commit = null) : bool
+    {
+        DB::beginTransaction();
+
+        try
+        {
+            $callback();
+            DB::commit();
+
+            if(! is_null($callback_pos_commit)) $callback_pos_commit();
+        }
+        catch (\Exception $e)
+        {
+            DB::rollBack();
+            return false;
+        }
+
+        return true;
     }
 }

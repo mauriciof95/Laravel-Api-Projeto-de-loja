@@ -5,6 +5,7 @@ namespace App\Livewire\Categoria;
 use App\Services\CategoriaServices;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class CadastrarCategoria extends Component
 {
@@ -27,8 +28,9 @@ class CadastrarCategoria extends Component
     public function cadastrar()
     {
         $dados = $this->validate();
-        //$this->categoriaServices->cadastrar($dados);
-        Session::flash('success', 'Registro cadastrado com sucesso!');
+        $this->categoriaServices->cadastrar($dados);
+        Toaster::success('Registro cadastrado com sucesso!');
+        $this->reset();
     }
 
     public function render()
