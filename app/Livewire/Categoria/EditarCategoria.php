@@ -4,7 +4,6 @@ namespace App\Livewire\Categoria;
 
 use App\Services\CategoriaServices;
 use Livewire\Component;
-use Masmerise\Toaster\Toast;
 use Masmerise\Toaster\Toaster;
 
 class EditarCategoria extends Component

@@ -40,6 +40,8 @@ class CadastrarCategoriaTest extends TestCase
             ->set('nome', 'te')
             ->call('cadastrar')
             ->assertHasErrors(['nome' => 'min']);
+
+        $this->assertDatabaseMissing('categorias', ['nome' => 'te']);
     }
 
     #[Test]
@@ -51,5 +53,7 @@ class CadastrarCategoriaTest extends TestCase
             ->set('nome', $categoria->nome)
             ->call('cadastrar')
             ->assertHasErrors(['nome' => 'unique']);
+
+        $this->assertDatabaseCount(Categoria::class, 1);
     }
 }

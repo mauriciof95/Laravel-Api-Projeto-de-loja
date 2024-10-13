@@ -14,7 +14,7 @@ class EditarCategoriaTest extends TestCase
     #[Test]
     public function renders_successfully()
     {
-        Livewire::test(EditarCategoria::class)
+        Livewire::test(EditarCategoria::class, ['id' => 0])
             ->assertStatus(200);
     }
 }

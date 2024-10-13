@@ -1,20 +1,19 @@
 <?php
 
-namespace Tests\Feature\Livewire\Categoria;
+namespace Tests\Feature\Livewire\Produto;
 
-use App\Livewire\Categoria\DeletarCategoria;
+use App\Livewire\Produto\EditarProduto;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
-use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class DeletarCategoriaTest extends TestCase
+class EditarProdutoTest extends TestCase
 {
-    #[Test]
+    /** @test */
     public function renders_successfully()
     {
-        Livewire::test(DeletarCategoria::class)
+        Livewire::test(EditarProduto::class)
             ->assertStatus(200);
     }
 }
