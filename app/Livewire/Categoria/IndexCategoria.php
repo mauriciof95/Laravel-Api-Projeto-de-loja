@@ -11,13 +11,13 @@ class IndexCategoria extends Component
 {
     use WithPagination;
 
-    protected CategoriaServices $categoriaServices;
+    protected CategoriaServices $categoria_services;
 
     public int $porPagina = 10;
     public string $pesquisa = '';
-    public function boot(CategoriaServices $categoriaServices)
+    public function boot(CategoriaServices $categoria_services)
     {
-        $this->categoriaServices = $categoriaServices;
+        $this->categoria_services = $categoria_services;
     }
 
     public function updating()
@@ -26,7 +26,7 @@ class IndexCategoria extends Component
     }
 
     public function deletar($id){
-        $resultado = $this->categoriaServices->deletar($id);
+        $resultado = $this->categoria_services->deletar($id);
 
         if(!empty($resultado['error']))
         {
@@ -40,7 +40,7 @@ class IndexCategoria extends Component
 
     public function render()
     {
-        $categorias = $this->categoriaServices->listar(
+        $categorias = $this->categoria_services->listar(
             pesquisa:  $this->pesquisa,
             porPagina: $this->porPagina);
 

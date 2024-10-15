@@ -1,12 +1,12 @@
 <div class="px-3">
     <header class="flex justify-between">
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            Produtos
+            Cupons
         </h2>
 
         <div>
-            <x-primary-link href="{{ route('cadastrar_produto') }}">
-                Novo Produto
+            <x-primary-link href="{{ route('cadastrar_cupom') }}">
+                Novo Cupom
             </x-primary-link>
         </div>
     </header>
@@ -20,21 +20,17 @@
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border-t">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th></th>
                         <th scope="col" class="px-6 py-3">
-                            Nome da Produto
+                            Identificacao do Cupom
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Categoria
+                            Data de Validade
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Valor de Compra
+                            Valor do Cupom
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Valor de Venda
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Quantidade em Estoque
+                            Aplicado?
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Ações
@@ -42,43 +38,35 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white">
-                    @forelse($produtos as $item)
+                    @forelse($cupons as $item)
                         <tr class="border-b">
-                            <th class="px-6 py-4">
-                                <div class="rounded-full bg-gray-200 max-w-14">
-                                    <img src="{{ imagemProduto($item->imagem) }}" class="aspect-auto">
-                                </div>
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{$item->identificacao}}
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{$item->nome}}
+                                {{ dataFormat($item->data_validade) }}
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{$item->categoria->nome}}
+                                {{$item->valor_desconto}}%
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ dinheiroFormat($item->valor_compra) }}
-                            </th>
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ dinheiroFormat($item->valor_venda) }}
-                            </th>
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $item->quantidade_estoque }}
+                                {{$item->aplicado ? 'SIM' : 'NÃO'}}
                             </th>
                             <td class="px-6 py-4">
                                 <div class="inline-flex space-x-2">
-                                    <x-secondary-link href="{{route('editar_produto', ['id' => $item->id])}}">
+                                    <x-secondary-link href="{{route('editar_cupom', ['id' => $item->id])}}">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </x-secondary-link>
 
                                     <x-danger-button x-data=""
-                                        x-on:click.prevent="$dispatch('open-modal', 'confirmar_deletar_produto-{{$item->id}}')">
+                                        x-on:click.prevent="$dispatch('open-modal', 'confirmar_deletar_cupom-{{$item->id}}')">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </x-danger-button>
 
-                                    <x-modal name="confirmar_deletar_produto-{{$item->id}}" :show="$errors->isNotEmpty()" focusable>
+                                    <x-modal name="confirmar_deletar_cupom-{{$item->id}}" :show="$errors->isNotEmpty()" focusable>
                                         <form wire:submit="deletar({{$item->id}})" class="p-6">
                                             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                                                Você tem certeza que deseja deletar a produto <b>{{$item->nome}}</b>?
+                                                Você tem certeza que deseja deletar o cupom <b>{{$item->identificacao}}</b>?
                                             </h2>
                                             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
                                                 Uma vez deletado, o processo não pode ser desfeito.
@@ -101,7 +89,7 @@
                         </tr>
                     @empty
                         <tr class="border-b">
-                            <td colspan="6" class="px-6 py-4 text-center italic font-light">
+                            <td colspan="5" class="px-6 py-4 text-center italic font-light">
                                 Nenhum registro encontrado.
                             </td>
                         </tr>
@@ -111,7 +99,7 @@
         </div>
 
         <div class="my-2 p-2">
-            {{ $produtos->onEachSide(1)->links() }}
+            {{ $cupons->onEachSide(1)->links() }}
         </div>
     </div>
 </div>

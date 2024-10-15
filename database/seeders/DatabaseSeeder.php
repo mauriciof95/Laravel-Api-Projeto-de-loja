@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Categoria;
+use App\Models\Produto;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,6 +23,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Categoria::factory()
+                ->count(50)
+                ->create();
+
+        Produto::factory()
                 ->count(50)
                 ->create();
     }

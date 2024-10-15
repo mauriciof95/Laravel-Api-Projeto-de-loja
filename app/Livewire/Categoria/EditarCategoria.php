@@ -8,19 +8,19 @@ use Masmerise\Toaster\Toaster;
 
 class EditarCategoria extends Component
 {
-    protected CategoriaServices $categoriaServices;
+    protected CategoriaServices $categoria_services;
 
     public int $id = 0;
     public string $nome = '';
 
-    public function boot(CategoriaServices $categoriaServices)
+    public function boot(CategoriaServices $categoria_services)
     {
-        $this->categoriaServices = $categoriaServices;
+        $this->categoria_services = $categoria_services;
     }
 
     public function mount($id)
     {
-        $categoria = $this->categoriaServices->encontrarPorId($id);
+        $categoria = $this->categoria_services->encontrarPorId($id);
 
         if(is_null($categoria))
         {
@@ -42,7 +42,7 @@ class EditarCategoria extends Component
     public function atualizar()
     {
         $dados = $this->validate();
-        $resultado = $this->categoriaServices->atualizar($dados, $this->id);
+        $resultado = $this->categoria_services->atualizar($dados, $this->id);
 
         if(!empty($resultado['error']))
         {

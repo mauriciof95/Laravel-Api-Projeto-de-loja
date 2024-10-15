@@ -9,13 +9,13 @@ use Masmerise\Toaster\Toaster;
 
 class CadastrarCategoria extends Component
 {
-    protected CategoriaServices $categoriaServices;
+    protected CategoriaServices $categoria_services;
 
     public string $nome = '';
 
-    public function boot(CategoriaServices $categoriaServices)
+    public function boot(CategoriaServices $categoria_services)
     {
-        $this->categoriaServices = $categoriaServices;
+        $this->categoria_services = $categoria_services;
     }
 
     public function rules() : array
@@ -28,7 +28,7 @@ class CadastrarCategoria extends Component
     public function cadastrar()
     {
         $dados = $this->validate();
-        $this->categoriaServices->cadastrar($dados);
+        $this->categoria_services->cadastrar($dados);
         Toaster::success('Registro cadastrado com sucesso!');
         $this->reset();
     }

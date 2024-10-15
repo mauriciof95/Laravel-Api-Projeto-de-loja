@@ -26,4 +26,9 @@ class Produto extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+
+    public function scopeComEstoque()
+    {
+        return $this->query->where('quantidade_estoque', '>', 0);
+    }
 }

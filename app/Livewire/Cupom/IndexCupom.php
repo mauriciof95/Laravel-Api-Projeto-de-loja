@@ -1,25 +1,23 @@
 <?php
 
-namespace App\Livewire\Produto;
+namespace App\Livewire\Cupom;
 
-use App\Services\ProdutoServices;
+use App\Services\CupomServices;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Masmerise\Toaster\Toaster;
 
-class IndexProduto extends Component
+class IndexCupom extends Component
 {
     use WithPagination;
 
-    protected ProdutoServices $produto_services;
+    protected CupomServices $cupom_services;
 
     public int $porPagina = 10;
     public string $pesquisa = '';
-    public function boot(
-        ProdutoServices $produto_services
-    )
+    public function boot(CupomServices $cupom_services)
     {
-        $this->produto_services = $produto_services;
+        $this->cupom_services = $cupom_services;
     }
 
     public function updating()
@@ -28,7 +26,7 @@ class IndexProduto extends Component
     }
 
     public function deletar($id){
-        $resultado = $this->produto_services->deletar($id);
+        $resultado = $this->cupom_services->deletar($id);
 
         if(!empty($resultado['error']))
         {
@@ -42,11 +40,10 @@ class IndexProduto extends Component
 
     public function render()
     {
-        $produtos = $this->produto_services->listar(
+        $cupons = $this->cupom_services->listar(
             pesquisa:  $this->pesquisa,
-            relacionamentos: ['categoria'],
             porPagina: $this->porPagina);
 
-        return view('livewire.produto.index-produto', compact('produtos'));
+        return view('livewire.cupom.index-cupom', compact('cupons'));
     }
 }

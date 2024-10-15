@@ -13,8 +13,8 @@ class CadastrarProduto extends Component
 {
     use WithFileUploads;
 
-    protected ProdutoServices $produtoServices;
-    protected CategoriaServices $categoriaServices;
+    protected ProdutoServices $produto_services;
+    protected CategoriaServices $categoria_services;
 
     public string $nome = '';
     public string $descricao = '';
@@ -27,17 +27,17 @@ class CadastrarProduto extends Component
     public Collection $categorias;
 
     public function boot(
-        ProdutoServices $produtoServices,
-        CategoriaServices $categoriaServices
+        ProdutoServices $produto_services,
+        CategoriaServices $categoria_services
     )
     {
-        $this->produtoServices = $produtoServices;
-        $this->categoriaServices = $categoriaServices;
+        $this->produto_services = $produto_services;
+        $this->categoria_services = $categoria_services;
     }
 
     public function mount()
     {
-        $this->categorias = $this->categoriaServices->listar();
+        $this->categorias = $this->categoria_services->listar();
     }
 
     public function rules() : array
@@ -56,7 +56,7 @@ class CadastrarProduto extends Component
     public function cadastrar()
     {
         $dados = $this->validate();
-        $this->produtoServices->cadastrar($dados);
+        $this->produto_services->cadastrar($dados);
         Toaster::success('Registro cadastrado com sucesso!');
         $this->resetExcept(['categorias']);
         $this->dispatch('pond-reset');

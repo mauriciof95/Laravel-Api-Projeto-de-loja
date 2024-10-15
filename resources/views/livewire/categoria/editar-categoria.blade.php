@@ -8,11 +8,15 @@
     </header>
 
     <form wire:submit="atualizar" class="mt-6 space-y-6">
-        <div>
-            <x-input-label for="nome" :value="'Nome da Categoria'" />
-            <x-text-input wire:model="nome" id="nome" name="nome" type="text" class="mt-1 block w-full" required autofocus autocomplete="nome" />
-            <x-input-error class="mt-2" :messages="$errors->get('nome')" />
-        </div>
+        <x-card>
+
+            <div>
+                <x-input-label for="nome" :value="'Nome da Categoria'" />
+                <x-text-input wire:model="nome" id="nome" name="nome" type="text" class="mt-1 block w-full" required autofocus autocomplete="nome" />
+                <x-input-error class="mt-2" :messages="$errors->get('nome')" />
+            </div>
+
+        </x-card>
 
         <div class="flex items-center gap-4">
             <x-primary-button>

@@ -6,7 +6,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "geekcom/validator-docs": "^3.10",
         "laravel/framework": "^11.9",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.0",
@@ -28,7 +30,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Http/Helpers/FormatHelper.php"
+            "app/Http/Helpers/FormatHelper.php",
+            "app/Http/Helpers/ImagemProdutoHelper.php"
         ]
     },
     "autoload-dev": {

@@ -75,13 +75,18 @@ class ProdutoServices extends BaseServices
         if(empty($produto))
             return ['error' => 'Registro não encontrado'];
 
-            if(!empty($dados['imagem']))
-            {
-                if($produto->imagem == null)
-                    $dados['imagem'] = $this->salvarImagem($dados['imagem'], $produto->nome);
-                else
-                    $dados['imagem'] = $this->atualizarImagem($dados['imagem'], $produto->nome, $produto->imagem);
-            }
+
+        if(!empty($dados['imagem']))
+        {
+            dd($dados);
+            if($produto->imagem == null)
+                $dados['imagem'] = $this->salvarImagem($dados['imagem'], $produto->nome);
+            else
+                $dados['imagem'] = $this->atualizarImagem($dados['imagem'], $produto->nome, $produto->imagem);
+        }
+
+        if($dados['imagem'] == null)
+            $dados['imagem'] = $produto->imagem;
 
         $produto->update($dados);
 

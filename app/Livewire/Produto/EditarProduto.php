@@ -13,8 +13,8 @@ class EditarProduto extends Component
 {
     use WithFileUploads;
 
-    protected ProdutoServices $produtoServices;
-    protected CategoriaServices $categoriaServices;
+    protected ProdutoServices $produto_services;
+    protected CategoriaServices $categoria_services;
 
     public int $id = 0;
     public string $nome = '';
@@ -28,17 +28,17 @@ class EditarProduto extends Component
     public Collection $categorias;
 
     public function boot(
-        ProdutoServices $produtoServices,
-        CategoriaServices $categoriaServices
+        ProdutoServices $produto_services,
+        CategoriaServices $categoria_services
     )
     {
-        $this->produtoServices = $produtoServices;
-        $this->categoriaServices = $categoriaServices;
+        $this->produto_services = $produto_services;
+        $this->categoria_services = $categoria_services;
     }
 
     public function mount($id)
     {
-        $produto = $this->produtoServices->encontrarPorId($id);
+        $produto = $this->produto_services->encontrarPorId($id);
 
         if(is_null($produto))
         {
@@ -46,7 +46,7 @@ class EditarProduto extends Component
             return redirect()->route('index_produto');
         }
 
-        $this->categorias = $this->categoriaServices->listar();
+        $this->categorias = $this->categoria_services->listar();
 
         $this->id = $produto->id;
         $this->nome = $produto->nome;
@@ -73,7 +73,7 @@ class EditarProduto extends Component
     public function atualizar()
     {
         $dados = $this->validate();
-        $resultado = $this->produtoServices->atualizar($dados, $this->id);
+        $resultado = $this->produto_services->atualizar($dados, $this->id);
 
         if(!empty($resultado['error']))
         {

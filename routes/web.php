@@ -3,6 +3,10 @@
 use App\Livewire\Categoria\CadastrarCategoria;
 use App\Livewire\Categoria\EditarCategoria;
 use App\Livewire\Categoria\IndexCategoria;
+use App\Livewire\Cupom\CadastrarCupom;
+use App\Livewire\Cupom\EditarCupom;
+use App\Livewire\Cupom\IndexCupom;
+use App\Livewire\Pedido\CadastrarPedido;
 use App\Livewire\Produto\CadastrarProduto;
 use App\Livewire\Produto\EditarProduto;
 use App\Livewire\Produto\IndexProduto;
@@ -22,6 +26,12 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/produto', IndexProduto::class)->name('index_produto');
     Route::get('/produto/cadastrar', CadastrarProduto::class)->name('cadastrar_produto');
     Route::get('/produto/editar/{id}', EditarProduto::class)->name('editar_produto');
+
+    Route::get('/cupom', IndexCupom::class)->name('index_cupom');
+    Route::get('/cupom/cadastrar', CadastrarCupom::class)->name('cadastrar_cupom');
+    Route::get('/cupom/editar/{id}', EditarCupom::class)->name('editar_cupom');
+
+    Route::get('/pedido/cadastrar', CadastrarPedido::class)->name('cadastrar_pedido');
 });
 
 

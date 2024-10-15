@@ -9,8 +9,7 @@
 
     <form wire:submit="atualizar" class="mt-6 space-y-6">
 
-        <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-            <div class="space-y-6">
+        <x-card>
 
                 <div class="mt-1 grid grid-cols-1 gap-5 gap-y-3 md:grid-cols-2">
                     <div>
@@ -67,8 +66,7 @@
                     <x-input-error class="mt-2" :messages="$errors->get('imagem')" />
                 </div>
 
-            </div>
-        </div>
+        </x-card>
 
         <div class="flex items-center gap-4">
             <x-primary-button>
