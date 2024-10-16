@@ -12,3 +12,7 @@ Route::controller(App\Http\Controllers\ProdutoController::class)->prefix('/produ
     Route::get('/{id}', 'encontrarPorId');
 });
 
+Route::controller(App\Http\Controllers\PedidoController::class)->prefix('/pedido')->group(function(){
+    Route::post('/', 'cadastrar');
+});
+

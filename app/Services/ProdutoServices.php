@@ -27,7 +27,7 @@ class ProdutoServices extends BaseServices
         return $query->get();
     }
 
-    public function encontrarPorId($id, $select = [], $relacionamentos = []) : Produto
+    public function encontrarPorId($id, $select = [], $relacionamentos = []) : Produto | null
     {
         $query = $this->produto->query();
 
@@ -53,7 +53,7 @@ class ProdutoServices extends BaseServices
         return $nomeImagem;
     }
 
-    public function deletarImagem($imagem){
+    public function deletarImagem($imagem) : void {
         if($imagem != null && Storage::disk('public')->exists('produtos/'.$imagem))
             Storage::disk('public')->delete('produtos/'.$imagem);
     }
@@ -76,16 +76,15 @@ class ProdutoServices extends BaseServices
             return ['error' => 'Registro não encontrado'];
 
 
-        if(!empty($dados['imagem']))
+        if(isset($dados['imagem']) && !empty($dados['imagem']))
         {
-            dd($dados);
             if($produto->imagem == null)
                 $dados['imagem'] = $this->salvarImagem($dados['imagem'], $produto->nome);
             else
                 $dados['imagem'] = $this->atualizarImagem($dados['imagem'], $produto->nome, $produto->imagem);
         }
 
-        if($dados['imagem'] == null)
+        if(isset($dados['imagem']) && $dados['imagem'] == null)
             $dados['imagem'] = $produto->imagem;
 
         $produto->update($dados);

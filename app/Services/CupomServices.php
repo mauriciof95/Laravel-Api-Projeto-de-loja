@@ -36,7 +36,7 @@ class CupomServices extends BaseServices
         return $query->find($id);
     }
 
-    public function encontrarPorIdenticacao(string $identificacao) : Cupom
+    public function encontrarPorIdenticacao(string $identificacao) : Cupom | null
     {
         return $this->cupom->valido()->where('identificacao', $identificacao)->first();
     }

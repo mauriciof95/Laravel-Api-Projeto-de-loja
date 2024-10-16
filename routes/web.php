@@ -30,8 +30,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/cupom', IndexCupom::class)->name('index_cupom');
     Route::get('/cupom/cadastrar', CadastrarCupom::class)->name('cadastrar_cupom');
     Route::get('/cupom/editar/{id}', EditarCupom::class)->name('editar_cupom');
-
-    Route::get('/pedido/cadastrar', CadastrarPedido::class)->name('cadastrar_pedido');
 });
 
 

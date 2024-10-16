@@ -3,6 +3,7 @@
 namespace Tests\Feature\Livewire\Categoria;
 
 use App\Livewire\Categoria\EditarCategoria;
+use App\Models\Categoria;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
@@ -14,7 +15,9 @@ class EditarCategoriaTest extends TestCase
     #[Test]
     public function renders_successfully()
     {
-        Livewire::test(EditarCategoria::class, ['id' => 0])
+        $categoria = Categoria::factory()->create();
+
+        Livewire::test(EditarCategoria::class, ['id' => $categoria->id])
             ->assertStatus(200);
     }
 }
