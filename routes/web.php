@@ -32,5 +32,4 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/cupom/editar/{id}', EditarCupom::class)->name('editar_cupom');
 });
 
-
 require __DIR__.'/auth.php';

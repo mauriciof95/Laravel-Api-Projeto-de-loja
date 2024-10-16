@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\EnviarEmailPedidoJob;
 use App\Models\Pedido;
 use Illuminate\Support\Facades\DB;
 
@@ -93,6 +94,8 @@ class PedidoServices extends BaseServices
             $pedido->pedido_itens()->createMany($produtos_pedido);
 
             DB::commit();
+
+            EnviarEmailPedidoJob::dispatch($pedido);
             return $pedido;
         }catch(\Exception $e){
             DB::rollBack();
