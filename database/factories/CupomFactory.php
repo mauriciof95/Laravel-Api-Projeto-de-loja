@@ -17,10 +17,10 @@ class CupomFactory extends Factory
     public function definition(): array
     {
         return [
-            'identificacao' => fake()->word(),
+            'identificacao' => 'CUPOM'.fake()->numberBetween(10, 9999),
             'data_validade' => '2024-12-30',
             'valor_desconto' => fake()->numberBetween(10, 50),
-            'aplicado' => fake()->numberBetween(1, 2) == 1 ? true : false,
+            'aplicado' => fake()->numberBetween(1, 3) == 1 ? true : false,
         ];
     }
 }

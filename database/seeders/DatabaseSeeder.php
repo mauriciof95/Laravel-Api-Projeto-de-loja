@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Categoria;
 use App\Models\Cliente;
+use App\Models\Cupom;
 use App\Models\Produto;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,14 +24,19 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin')
         ]);
 
-        Cliente::factory()->create();
+        Cliente::factory()
+            ->create();
 
         Categoria::factory()
-                ->count(50)
-                ->create();
+            ->count(50)
+            ->create();
 
         Produto::factory()
-                ->count(50)
-                ->create();
+            ->count(10)
+            ->create();
+
+        Cupom::factory()
+            ->count(10)
+            ->create();
     }
 }

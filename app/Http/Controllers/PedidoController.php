@@ -48,12 +48,13 @@ class PedidoController extends Controller
 
     public function cadastrar(Request $request)
     {
-        $this->success('opa');
-
         $user = auth()->user();
 
-        $result = $this->pedido_services->cadastrar($request->all(), $user->id);
+        $pedido = $this->pedido_services->cadastrar($request->all(), $user->id);
 
-        return $this->success($result);
+        if(!empty($pedido['errors']))
+            return $this->error($pedido, 422);
+
+        return $this->success($pedido);
     }
 }

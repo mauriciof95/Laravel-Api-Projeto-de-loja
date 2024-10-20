@@ -1,11 +1,8 @@
 
 <div>
-
-    <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            Atualização de Categoria
-        </h2>
-    </header>
+    <x-header class="flex justify-between">
+        Atualização de Categoria
+    </x-header>
 
     <form wire:submit="atualizar" class="mt-6 space-y-6">
         <x-card>

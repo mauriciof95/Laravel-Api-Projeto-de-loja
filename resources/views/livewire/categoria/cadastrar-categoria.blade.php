@@ -1,11 +1,8 @@
 
 <div>
-
-    <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            Cadastro de Categoria
-        </h2>
-    </header>
+    <x-header>
+        Cadastro de Categoria
+    </x-header>
 
     <form wire:submit="cadastrar" class="mt-6 space-y-6">
         <x-card>

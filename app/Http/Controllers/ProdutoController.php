@@ -24,13 +24,13 @@ class ProdutoController extends Controller
         $produtos = $this->produto_services->listar(
             $pesquisa,
             relacionamentos: ['categoria'],
-            porPagina: $por_pagina);
+            porPagina: $por_pagina,
+            ordenacao: [['quantidade_estoque', 'desc'], ['id', 'asc']]
+        );
 
         foreach($produtos as $item)
         {
-            if($item->imagem == null){
-                $item->imagem = imagemProduto($item->imagem);
-            }
+            $item->imagem = url(imagemProduto($item->imagem));
         }
 
         return $this->success($produtos);
@@ -47,9 +47,7 @@ class ProdutoController extends Controller
             relacionamentos: ['categoria']
         );
 
-        if($produto->imagem == null){
-            $produto->imagem = imagemProduto($produto->imagem);
-        }
+        $produto->imagem = url(imagemProduto($produto->imagem));
 
         return $this->success($produto);
     }

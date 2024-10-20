@@ -27,7 +27,10 @@ class BaseServices
     {
         if (!empty($ordenacao))
         {
-            return $query->orderBy($ordenacao[0], $ordenacao[1] ?? '');
+            foreach($ordenacao as $ordem){
+                $query->orderBy($ordem[0], $ordem[1] ?? '');
+            }
+            return $query;
         }
         else
         {

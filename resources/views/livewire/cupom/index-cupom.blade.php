@@ -1,15 +1,15 @@
 <div class="px-3">
-    <header class="flex justify-between">
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            Cupons
-        </h2>
+    <x-header class="flex justify-between">
+        Cupons
 
-        <div>
-            <x-primary-link href="{{ route('cadastrar_cupom') }}">
-                Novo Cupom
-            </x-primary-link>
-        </div>
-    </header>
+        <x-slot name="subtitulo">
+            <div>
+                <x-primary-link href="{{ route('cadastrar_cupom') }}">
+                    Novo Cupom
+                </x-primary-link>
+            </div>
+        </x-slot>
+    </x-header>
 
     <div class="bg-white mt-6">
         <div class="p-2 w-full sm:w-2/3 md:w-2/3 lg:w-2/4">

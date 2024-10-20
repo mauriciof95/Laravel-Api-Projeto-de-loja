@@ -1,20 +1,14 @@
 
 <div>
-
-    <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            Detalhes do Pedido
-        </h2>
-    </header>
+    <x-header>
+        Detalhes do Pedido
+    </x-header>
 
     <form wire:submit="atualizarStatus" class="mt-6 space-y-6">
         <x-card>
-
-            <header>
-                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                    Dados do Cliente
-                </h2>
-            </header>
+            <x-header>
+                Dados do Cliente
+            </x-header>
 
             <div class="mt-1 grid grid-cols-1 gap-5 gap-y-3 md:grid-cols-2">
                 <div>
@@ -51,12 +45,9 @@
         </x-card>
 
         <x-card>
-
-            <header>
-                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                    Produtos
-                </h2>
-            </header>
+            <x-header>
+                Produtos
+            </x-header>
 
             <table class="table">
                 <thead class="thead">
@@ -120,14 +111,15 @@
         </x-card>
 
         <x-card>
-            <header>
-                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                    Status do Pedido
-                </h2>
-                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                    Certifique-se de que o status está correto antes de alterar.
-                </p>
-            </header>
+            <x-header>
+                Status do Pedido
+
+                <x-slot name="subtitulo">
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                        Certifique-se de que o status está correto antes de alterar.
+                    </p>
+                </x-slot>
+            </x-header>
 
             <div class="mt-1 grid grid-cols-1 gap-5 gap-y-3 md:grid-cols-2">
                 <div>

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,7 +23,7 @@ class ProdutoFactory extends Factory
             'valor_compra' => fake()->randomFloat(2, 2, 200),
             'valor_venda' => fake()->randomFloat(2, 2, 200),
             'quantidade_estoque' => fake()->numberBetween(0, 20),
-            'categoria_id' => fake()->numberBetween(1, 10)
+            'categoria_id' => Categoria::inRandomOrder()->first()->id
         ];
     }
 }

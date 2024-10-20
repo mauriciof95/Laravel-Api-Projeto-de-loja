@@ -1,11 +1,9 @@
 
 <div>
 
-    <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            Atualização de Cupom
-        </h2>
-    </header>
+    <x-header>
+        Atualização de Cupom
+    </x-header>
 
     <form wire:submit="atualizar" class="mt-6 space-y-6">
 

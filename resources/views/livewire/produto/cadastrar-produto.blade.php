@@ -1,11 +1,8 @@
 
 <div>
-
-    <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            Cadastro de Produto
-        </h2>
-    </header>
+    <x-header>
+        Cadastro de Produto
+    </x-header>
 
     <form wire:submit="cadastrar" class="mt-6 space-y-6">
 

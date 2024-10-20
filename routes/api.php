@@ -16,17 +16,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     });
 });
 
-Route::controller(App\Http\Controllers\CategoriaController::class)->prefix('/categoria')->group(function(){
-    Route::get('/', 'listar');
-    Route::get('/{id}', 'encontrarPorId');
-});
-
 Route::controller(App\Http\Controllers\ProdutoController::class)->prefix('/produto')->group(function(){
     Route::get('/', 'listar');
     Route::get('/{id}', 'encontrarPorId');
 });
-
-
 
 Route::controller(App\Http\Controllers\CupomController::class)->prefix('/cupom')->group(function(){
     Route::get('/{identificacao}', 'encontrarPorIdentificacao');

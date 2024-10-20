@@ -1,9 +1,8 @@
 <div class="px-3">
-    <header class="flex justify-between">
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            Pedidos
-        </h2>
-    </header>
+
+    <x-header>
+        Pedidos
+    </x-header>
 
     <div class="bg-white mt-6">
         <div class="p-2 w-full sm:w-2/3 md:w-2/3 lg:w-2/4">
