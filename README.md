@@ -7,60 +7,89 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Configurações do projeto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### .env
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Após clonar o projeto, copiar o arquivo `.env.exemple` e renomear para `.env`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+#### executar o comando
+``` sh
+php artisan key:generate
+```
 
-## Learning Laravel
+#### configurar as variaveis de ambiente
+`FRONTEND_URL=` url do frontend para o cors
+`FRONTEND_PEDIDO_DETALHES_URL="${FRONTEND_URL}/pedido/detalhes/"` variavel necessario para o envio do link de detalhes do pedido no email
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### configurar as variaveis de ambiente do banco
+`DB_CONNECTION=`\
+`DB_HOST=`\
+`DB_PORT=`\
+`DB_DATABASE=`\
+`DB_USERNAME=`\
+`DB_PASSWORD=`
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+#### configurar as variaveis de ambiente do serviço de email
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+No projeto usei o smtp do gmail, então vou deixar pre configurado. o MAIL_USERNAME é o email e o MAIL_PASSWORD é uma chave gerada nas configurações de segurança do gmail, para permitir que outros serviços usem seu email como remetente.
 
-## Laravel Sponsors
+`MAIL_MAILER=smtp`\
+`MAIL_HOST=smtp.gmail.com`\
+`MAIL_PORT=587`\
+`MAIL_USERNAME=`\
+`MAIL_PASSWORD=`\
+`MAIL_ENCRYPTION=null`\
+`MAIL_FROM_ADDRESS=`\
+`MAIL_FROM_NAME="${APP_NAME}"`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Instação de dependencias
 
-### Premium Partners
+#### executar o comando para instalar as dependecias do composer
+``` sh
+composer install
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### executar o comando para instalar as dependecias do node_modules
+``` sh
+npm install
+```
 
-## Contributing
+### Criando o banco
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### executar o comando para rodar as migrations
+``` sh
+php artisan migrate --seed
+```
 
-## Code of Conduct
+### Rodando o projeto
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### executar o comando para iniciar o server
+``` sh
+php artisan serve
+```
 
-## Security Vulnerabilities
+#### executar o comando para rodar as compilações de css
+``` sh
+npm run dev
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### executar o comando para iniciar as Jobs
+``` sh
+php artisan queue:work
+```
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Bibliotecas Usadas
+
+`laravel/sanctum versão 4.0`\
+`livewire/livewire versão 3.4`\
+`masmerise/livewire-toaster versão 2.3`\
+`laravel/breeze versão 2.2`\
+`fakerphp/faker versão 1.23`\
+`@tailwindcss/forms versão 0.5.2`\
+`postcss versão 8.4.31`\
+`tailwindcss versão 3.1.0`\
+`vite versão 5.0`\
+`@alpinejs/mask versão 3.14.1`
