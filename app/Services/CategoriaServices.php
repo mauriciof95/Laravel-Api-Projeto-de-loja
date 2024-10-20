@@ -13,7 +13,7 @@ class CategoriaServices extends BaseServices
     public function listar($pesquisa = '', $select = [], $relacionamentos = [], $ordenacao = [], $porPagina = null) : Collection | LengthAwarePaginator
     {
         $query = $this->categoria->query();
-        $query->where('nome', 'like', '%'.$pesquisa.'%');
+        $query->where('nome', 'ilike', '%'.$pesquisa.'%');
 
         $this->aplicarSelect($query, $select);
         $this->aplicarRelacionamento($query, $relacionamentos);

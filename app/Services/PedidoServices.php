@@ -21,7 +21,7 @@ class PedidoServices extends BaseServices
     {
         $query = $this->pedido->query();
         $query = $query->whereHas('cliente', function($query) use ($pesquisa){
-            $query->where('nome', 'like', '%'.$pesquisa.'%')
+            $query->where('nome', 'ilike', '%'.$pesquisa.'%')
                   ->orWhere('c_cpf', 'like', '%'.$pesquisa.'%');
         });
 

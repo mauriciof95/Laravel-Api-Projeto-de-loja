@@ -24,19 +24,19 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin')
         ]);
 
-        Cliente::factory()
-            ->create();
+        // Cliente::factory()
+        //     ->create();
 
-        Categoria::factory()
-            ->count(50)
-            ->create();
+        // Categoria::factory()
+        //     ->count(50)
+        //     ->create();
 
-        Produto::factory()
-            ->count(10)
-            ->create();
+        // Produto::factory()
+        //     ->count(10)
+        //     ->create();
 
-        Cupom::factory()
-            ->count(10)
-            ->create();
+        // Cupom::factory()
+        //     ->count(10)
+        //     ->create();
     }
 }

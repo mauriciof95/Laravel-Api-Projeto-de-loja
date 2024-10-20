@@ -13,7 +13,7 @@ class ClienteServices extends BaseServices
     public function listar($pesquisa = '', $select = [], $relacionamentos = [], $ordenacao = [], $porPagina = null) : Collection | LengthAwarePaginator
     {
         $query = $this->cliente->query();
-        $query->where('nome', 'like', '%'.$pesquisa.'%');
+        $query->where('nome', 'ilike', '%'.$pesquisa.'%');
 
         $this->aplicarSelect($query, $select);
         $this->aplicarRelacionamento($query, $relacionamentos);

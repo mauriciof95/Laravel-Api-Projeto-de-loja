@@ -9,7 +9,7 @@
 
             <div>
                 <x-input-label for="nome" :value="'Nome da Categoria'" />
-                <x-text-input wire:model="nome" id="nome" name="nome" type="text" class="mt-1 block w-full" required autofocus autocomplete="nome" />
+                <x-text-input wire:model="nome" id="nome" name="nome" type="text" class="mt-1 block w-full"/>
                 <x-input-error class="mt-2" :messages="$errors->get('nome')" />
             </div>
 

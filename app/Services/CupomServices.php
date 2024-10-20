@@ -13,7 +13,7 @@ class CupomServices extends BaseServices
     public function listar($pesquisa = '', $select = [], $relacionamentos = [], $ordenacao = [], $porPagina = null) : Collection | LengthAwarePaginator
     {
         $query = $this->cupom->query();
-        $query->where('identificacao', 'like', '%'.$pesquisa.'%');
+        $query->where('identificacao', 'ilike', '%'.$pesquisa.'%');
 
         $this->aplicarSelect($query, $select);
         $this->aplicarRelacionamento($query, $relacionamentos);

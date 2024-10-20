@@ -1,7 +1,7 @@
 <div class="relative">
     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <span wire:loading wire:target="pesquisa">
-            <span class="loader mr-2 size-4" role="status" aria-hidden="true"></span>
+            <i class="fas fa-spinner animate-spin"></i>
         </span>
         <i class="fas fa-search" wire:loading.remove wire:target="pesquisa"></i>
     </div>

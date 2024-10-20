@@ -44,12 +44,18 @@ class CadastrarProduto extends Component
     {
         return [
             'nome' => ['required', 'string', 'min:3', 'unique:produtos,nome'],
-            'imagem' => ['nullable', 'image', 'mimes:jpg,png,jpeg,svg', 'max:3048'],
+            'imagem' => ['required', 'image', 'mimes:jpg,png,jpeg,svg', 'max:3048'],
             'descricao' => ['string', 'min:3'],
             'valor_compra' => ['required', 'numeric', 'min:0'],
             'valor_venda' => ['required', 'numeric', 'min:0'],
             'quantidade_estoque' => ['required', 'numeric', 'min:0'],
             'categoria_id' => ['required', 'int', 'exists:categorias,id'],
+        ];
+    }
+
+    public function messages() : array{
+        return [
+            'imagem.required' => 'Uma imagem é necessário.'
         ];
     }
 

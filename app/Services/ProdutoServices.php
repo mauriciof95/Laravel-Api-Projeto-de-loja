@@ -14,7 +14,7 @@ class ProdutoServices extends BaseServices
     public function listar($pesquisa = '', $select = [], $relacionamentos = [], $ordenacao = [], $porPagina = null) : Collection | LengthAwarePaginator
     {
         $query = $this->produto->query();
-        $query->where('nome', 'like', '%'.$pesquisa.'%');
+        $query->where('nome', 'ilike', '%'.$pesquisa.'%');
 
         $this->aplicarSelect($query, $select);
         $this->aplicarRelacionamento($query, $relacionamentos);
@@ -39,10 +39,7 @@ class ProdutoServices extends BaseServices
 
     public function cadastrar($dados) : Produto
     {
-        if(!empty($dados['imagem'])){
-            $dados['imagem'] = $this->salvarImagem($dados['imagem'], $dados['nome']);
-        }
-
+        $dados['imagem'] = $this->salvarImagem($dados['imagem'], $dados['nome']);
         return $this->produto->create($dados);
     }
 
@@ -75,7 +72,6 @@ class ProdutoServices extends BaseServices
         if(empty($produto))
             return ['error' => 'Registro não encontrado'];
 
-
         if(isset($dados['imagem']) && !empty($dados['imagem']))
         {
             if($produto->imagem == null)
@@ -84,7 +80,8 @@ class ProdutoServices extends BaseServices
                 $dados['imagem'] = $this->atualizarImagem($dados['imagem'], $produto->nome, $produto->imagem);
         }
 
-        if(isset($dados['imagem']) && $dados['imagem'] == null)
+
+        if(array_key_exists('imagem', $dados) && $dados['imagem'] == null)
             $dados['imagem'] = $produto->imagem;
 
         $produto->update($dados);
