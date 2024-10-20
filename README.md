@@ -81,8 +81,11 @@ php artisan queue:work
 
 
 
-## Bibliotecas Usadas
+## Tecnlogias Usadas
 
+`php versão 8.2`\
+`geekcom/validator-docs versão 3.10`\
+`laravel/framework versão 11.9`\
 `laravel/sanctum versão 4.0`\
 `livewire/livewire versão 3.4`\
 `masmerise/livewire-toaster versão 2.3`\
