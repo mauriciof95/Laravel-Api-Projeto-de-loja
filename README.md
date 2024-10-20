@@ -84,15 +84,13 @@ php artisan queue:work
 ## Tecnlogias Usadas
 
 `php versão 8.2`\
-`geekcom/validator-docs versão 3.10`\
-`laravel/framework versão 11.9`\
-`laravel/sanctum versão 4.0`\
-`livewire/livewire versão 3.4`\
-`masmerise/livewire-toaster versão 2.3`\
-`laravel/breeze versão 2.2`\
-`fakerphp/faker versão 1.23`\
-`@tailwindcss/forms versão 0.5.2`\
+`laravel versão 11.9`\
+`laravel sanctum versão 4.0`\
+`livewire versão 3.4`\
+`livewire toaster versão 2.3`\
+`laravel breeze versão 2.2`\
+`fakerphp versão 1.23`\
 `postcss versão 8.4.31`\
 `tailwindcss versão 3.1.0`\
 `vite versão 5.0`\
-`@alpinejs/mask versão 3.14.1`
+`alpine mask versão 3.14.1`
