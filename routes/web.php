@@ -7,15 +7,19 @@ use App\Livewire\Cupom\CadastrarCupom;
 use App\Livewire\Cupom\EditarCupom;
 use App\Livewire\Cupom\IndexCupom;
 use App\Livewire\Pedido\CadastrarPedido;
+use App\Livewire\Pedido\DetalhesPedido;
+use App\Livewire\Pedido\IndexPedido;
 use App\Livewire\Produto\CadastrarProduto;
 use App\Livewire\Produto\EditarProduto;
 use App\Livewire\Produto\IndexProduto;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+
 
 Route::middleware(['auth'])->group(function(){
-    Route::view('dashboard', 'dashboard')->middleware('verified')->name('dashboard');
+    Route::view('/', 'home');
+
+    Route::view('home', 'home')->name('home');
     Route::view('profile', 'profile')->name('profile');
 
 
@@ -30,6 +34,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/cupom', IndexCupom::class)->name('index_cupom');
     Route::get('/cupom/cadastrar', CadastrarCupom::class)->name('cadastrar_cupom');
     Route::get('/cupom/editar/{id}', EditarCupom::class)->name('editar_cupom');
+
+    Route::get('/pedido', IndexPedido::class)->name('index_pedido');
+    Route::get('/pedido/detalhes/{id}', DetalhesPedido::class)->name('detalhes_pedido');
 });
 
 require __DIR__.'/auth.php';

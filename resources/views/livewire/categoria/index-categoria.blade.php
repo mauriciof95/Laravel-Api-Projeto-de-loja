@@ -17,24 +17,24 @@
         </div>
 
         <div class="relative overflow-x-auto">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border-t">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table class=table>
+                <thead class=thead>
                     <tr>
-                        <th scope="col" class="px-6 py-3">
+                        <th >
                             Nome da Categoria
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th >
                             Ações
                         </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white">
+                <tbody class="tbody">
                     @forelse($categorias as $item)
-                        <tr class="border-b">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <tr>
+                            <th>
                                 {{$item->nome}}
                             </th>
-                            <td class="px-6 py-4">
+                            <td>
                                 <div class="inline-flex space-x-2">
                                     <x-secondary-link href="{{route('editar_categoria', ['id' => $item->id])}}">
                                         <i class="fa-regular fa-pen-to-square"></i>
@@ -70,7 +70,7 @@
                             </td>
                         </tr>
                     @empty
-                        <tr class="border-b">
+                        <tr>
                             <td colspan="2" class="px-6 py-4 text-center italic font-light">
                                 Nenhum registro encontrado.
                             </td>

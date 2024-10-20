@@ -3,29 +3,22 @@
 namespace App\Mail;
 
 use App\Models\Pedido;
-use App\Services\PedidoServices;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class PedidoRealizado extends Mailable
+class PedidoCanceladoMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $pedido;
-    public $url;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(Pedido $pedido)
+    public function __construct(protected Pedido $pedido)
     {
-        $this->pedido = $pedido;
-        $this->url = '';
     }
 
     /**
@@ -34,10 +27,10 @@ class PedidoRealizado extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('notification.teste.noreply@gmail.com', 'VendaExpress'),
-            subject: 'Pedido Realizado Com Sucesso',
+            from: new Address(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME')),
+            subject: 'Seu Pedido foi cancelado',
             replyTo: [
-                new Address('mauriciofurtado.95@gmail.com', 'Mauricio'),
+                new Address($this->pedido->cliente->email, $this->pedido->cliente->nome),
             ],
         );
     }
@@ -48,12 +41,10 @@ class PedidoRealizado extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'pedido-realizado',
+            view: 'mail.pedido-cancelado',
             with: [
                 'id' => $this->pedido->id,
-                'cliente_nome' => $this->pedido->cliente_nome,
-                'data_compra' => $this->pedido->data_venda,
-                'valor_total' => $this->pedido->valor_total,
+                'cliente_nome' => $this->pedido->cliente->nome
             ]
         );
     }

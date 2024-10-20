@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->string('cliente_nome');
-            $table->string('cliente_cpf');
-            $table->string('cliente_telefone');
-            $table->string('cliente_email');
-            $table->string('valor_total');
-            $table->string('data_venda');
+            $table->unsignedBigInteger('cliente_id')->nullable();
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->decimal('valor_total', 10, 2);
+            $table->dateTime('data_venda');
+            $table->string('status');
             $table->unsignedBigInteger('cupom_id')->nullable();
             $table->foreign('cupom_id')->references('id')->on('cupons');
             $table->timestamps();

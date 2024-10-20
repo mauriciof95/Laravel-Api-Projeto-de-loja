@@ -29,8 +29,10 @@ class BaseServices
         {
             return $query->orderBy($ordenacao[0], $ordenacao[1] ?? '');
         }
-
-        return $query;
+        else
+        {
+            return $query->orderBy('id', 'desc');
+        }
     }
 
     function transaction($callback, $callback_pos_commit = null) : bool

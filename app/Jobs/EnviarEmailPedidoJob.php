@@ -2,7 +2,12 @@
 
 namespace App\Jobs;
 
+use App\Enums\PedidoEnum;
+use App\Mail\PedidoCanceladoMail;
+use App\Mail\PedidoEnviadoMail;
+use App\Mail\PedidoFinalizadoMail;
 use App\Mail\PedidoRealizado;
+use App\Mail\PedidoRecebidoMail;
 use App\Models\Pedido;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -27,7 +32,23 @@ class EnviarEmailPedidoJob implements ShouldQueue
      */
     public function handle(): void
     {
-        Mail::to($this->pedido->cliente_email)
-            ->send(new PedidoRealizado($this->pedido));
+        $mail = null;
+
+        switch($this->pedido->status){
+            case PedidoEnum::RECEBIDO:
+                $mail = new PedidoRecebidoMail($this->pedido);
+                break;
+            case PedidoEnum::ENVIADO:
+                $mail = new PedidoEnviadoMail($this->pedido);
+                break;
+            case PedidoEnum::FINALIZADO:
+                $mail = new PedidoFinalizadoMail($this->pedido);
+                break;
+            case PedidoEnum::CANCELADO:
+                $mail = new PedidoCanceladoMail($this->pedido);
+                break;
+        }
+
+        Mail::to($this->pedido->cliente->email)->send($mail);
     }
 }

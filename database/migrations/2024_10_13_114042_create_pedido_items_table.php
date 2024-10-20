@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pedido_itens', function (Blueprint $table) {
             $table->id();
             $table->integer('quantidade');
-            $table->decimal('valor_unitario');
+            $table->decimal('valor_unitario', 10, 2);
             $table->unsignedBigInteger('produto_id');
             $table->foreign('produto_id')->references('id')->on('produtos');
             $table->unsignedBigInteger('pedido_id');

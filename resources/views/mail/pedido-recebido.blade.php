@@ -15,12 +15,11 @@
 
         <p class="mt-4 text-lg">Para visualizar os detalhes completos do seu pedido, acesse o link abaixo:</p>
 
-        <a href="#"
+        <a href="{{ $url_pedido_detalhes }}"
             class="mt-2 inline-block text-blue-600 hover:text-blue-800 underline text-lg font-semibold">Visualizar
             Pedido</a>
 
-        <p class="mt-4 text-lg">Se precisar de ajuda ou tiver alguma dúvida, estamos à disposição. Basta responder a
-            este email.</p>
+        <p class="mt-4 text-lg">Se precisar de ajuda ou tiver alguma dúvida, estamos à disposição. Basta entrar em contato.</p>
 
         <p class="mt-6 text-lg">Atenciosamente,</p>
 

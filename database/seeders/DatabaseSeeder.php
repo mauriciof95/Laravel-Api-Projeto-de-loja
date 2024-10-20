@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Categoria;
+use App\Models\Cliente;
 use App\Models\Produto;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -21,6 +22,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => Hash::make('admin')
         ]);
+
+        Cliente::factory()->create();
 
         Categoria::factory()
                 ->count(50)

@@ -69,7 +69,7 @@ class ProdutoServices extends BaseServices
         return $nomeImagem;
     }
 
-    public function atualizar($dados, $id) : Array | Produto
+    public function atualizar($dados, $id)
     {
         $produto = $this->encontrarPorId($id);
         if(empty($produto))
