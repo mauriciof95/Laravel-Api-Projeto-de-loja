@@ -101,7 +101,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="px-6 py-4 text-center italic font-light">
+                            <td colspan="7" class="px-6 py-4 text-center italic font-light">
                                 Nenhum registro encontrado.
                             </td>
                         </tr>
