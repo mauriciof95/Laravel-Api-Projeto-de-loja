@@ -13,22 +13,19 @@
 
 Após clonar o projeto, copiar o arquivo `.env.exemple` e renomear para `.env`
 
-#### executar o comando
-``` sh
-php artisan key:generate
-```
-
 #### configurar as variaveis de ambiente
 `FRONTEND_URL=` url do frontend para o cors
 `FRONTEND_PEDIDO_DETALHES_URL="${FRONTEND_URL}/pedido/detalhes/"` variavel necessario para o envio do link de detalhes do pedido no email
 
 #### configurar as variaveis de ambiente do banco
-`DB_CONNECTION=`\
-`DB_HOST=`\
-`DB_PORT=`\
+`DB_CONNECTION=pgsql`\
+`DB_HOST=localhost`\
+`DB_PORT=5432`\
 `DB_DATABASE=`\
-`DB_USERNAME=`\
+`DB_USERNAME=postgres`\
 `DB_PASSWORD=`
+
+Obs: O projeto foi desenvolvido para usar o banco de dados postgres, pode acontecer algum problema se usar outro banco de dados
 
 #### configurar as variaveis de ambiente do serviço de email
 
@@ -55,12 +52,21 @@ composer install
 npm install
 ```
 
+#### executar o comando para gerar a chave no .env
+``` sh
+php artisan key:generate
+```
+
 ### Criando o banco
+
+Crie o banco de dados com o nome que foi definido na configuração do .env
 
 #### executar o comando para rodar as migrations
 ``` sh
 php artisan migrate --seed
 ```
+
+Obs: Será gerado uma seed para user com email `admin@admin.com` e senha `admin`
 
 ### Rodando o projeto
 
