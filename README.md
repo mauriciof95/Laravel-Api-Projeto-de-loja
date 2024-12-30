@@ -7,7 +7,8 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Link Frontend Vue https://github.com/mauriciof95/Vue-Projeto-de-Loja
+## Link Frontend Vue 
+https://github.com/mauriciof95/Vue-Projeto-de-Loja
 
 ## Configurações do projeto
 
